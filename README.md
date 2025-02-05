@@ -1,5 +1,11 @@
 ## 📌 **Jak spustit testy**
+
+    Pokud máte docker spusťte z rootu repozitáře v PowerShellu
+
+    docker run --rm -v ${PWD}:/test --ipc=host marketsquare/robotframework-browser:latest bash -c "pip install --break-system-packages -r /test/Requirements.txt; robot --variable BASE_URL:https://to-barrel-monitor.azurewebsites.net/ --output-dir /test/output /test/Tests"
     
+    A nebo
+
 1. **Vytvořte a aktivujte virtuální prostředí** (doporučeno pro izolaci závislostí)
     
     ```bash
@@ -18,26 +24,14 @@
     Zkopírovat
     pip install -r requirements.txt
     
-    ```
-    
-3. **Nastavte environmentální proměnné** (můžete upravit `.env` soubor nebo nastavit ručně)
-    - Testy vyžadují proměnnou `BASE_URL`, která definuje základní URL API.
-    - Například:
         
-        ```bash
-        bash
-        Zkopírovat
-        export BASE_URL=http://localhost:8000  # Linux/macOS
-        set BASE_URL=http://localhost:8000     # Windows (cmd)
-        
-        ```
-        
-4. **Spusťte testy pomocí Robot Frameworku**
+3. **Spusťte testy pomocí Robot Frameworku**
     
     ```bash
     bash
+    Najeď do rootu repozitáře
     Zkopírovat
-    robot -d results tests/ --variable BASE_URL:https://to-barrel-monitor.azurewebsites.net .
+    robot --variable BASE_URL:https://to-barrel-monitor.azurewebsites.net .
 
     
     ```
@@ -100,6 +94,12 @@ Testy pokrývají následující API operace:
 
 ## 📌 **How to Run Tests**  
 
+    If u have Docker go to root repository and run in PowerShell
+
+    docker run --rm -v ${PWD}:/test --ipc=host marketsquare/robotframework-browser:latest bash -c "pip install --break-system-packages -r /test/Requirements.txt; robot --variable BASE_URL:https://to-barrel-monitor.azurewebsites.net/ --output-dir /test/output /test/Tests"
+
+    Or 
+
 1. **Create and activate a virtual environment** (recommended for dependency isolation)  
 
     ```bash
@@ -112,21 +112,12 @@ Testy pokrývají následující API operace:
 
     ```bash
     pip install -r requirements.txt
-    ```
 
-3. **Set environment variables** (you can modify the `.env` file or set them manually)  
-    - The tests require the `BASE_URL` variable, which defines the base API URL.  
-    - Example:  
-
-        ```bash
-        export BASE_URL=http://localhost:8000  # Linux/macOS
-        set BASE_URL=http://localhost:8000     # Windows (cmd)
-        ```
-
-4. **Run tests using Robot Framework**  
+3. **Run tests using Robot Framework**  
 
     ```bash
-    robot -d results tests/ --variable BASE_URL:https://to-barrel-monitor.azurewebsites.net
+    Go to root repository
+    robot --variable BASE_URL:https://to-barrel-monitor.azurewebsites.net .
     ```
 
     - `-d results` ensures that test outputs are saved in the `results` folder.  
@@ -174,3 +165,12 @@ The tests cover the following API operations:
 - Performing operations on non-existent IDs (e.g., attempting to delete a non-existent barrel).  
 - Verifying maximum input lengths.  
 - Testing special characters in input values.  
+
+
+
+
+
+
+
+
+

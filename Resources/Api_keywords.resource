@@ -43,13 +43,13 @@ Create Barrel With Body
     [Arguments]    ${body}    # Argument for the body
     ${headers}=    Create Dictionary    Content-Type=application/json    # Create the headers for the request
     ${response}=    POST    ${BARRELS_ENDPOINT}    json=${body}    headers=${headers}    # Send the POST request
-    [Return]    ${response}    # Return the response
+    RETURN    ${response}    # Return the response
 
 Generate Long String
     [Documentation]    Generates a string of a given length
     [Arguments]    ${length}    # Argument for the length of the string
     ${string}=    Evaluate    'x' * ${length}    # Generate the string
-    [Return]    ${string}    # Return the string
+    RETURN    ${string}    # Return the string
 
 
 Test Missing Required Field
@@ -94,26 +94,26 @@ Create Measurement
 
     ${headers}=    Create Dictionary    Content-Type=application/json    # Create the headers for the request
     ${response}=    POST    ${MEASUREMENTS_ENDPOINT}    json=${body}    headers=${headers}    # Send the POST request
-    [Return]    ${response}    # Return the response
+    RETURN    ${response}    # Return the response
 
 Get All Measurements    
     [Documentation]    Retrieves all measurements from the system
     ${response}=    GET    ${MEASUREMENTS_ENDPOINT}    # Send the GET request
-    [Return]    ${response}    # Return the response
+    RETURN    ${response}    # Return the response
 
 Get Measurement By ID
     [Documentation]    Retrieves specific measurement by its ID
     [Arguments]    ${measurement_id}    # Argument for the measurement ID
     ${url}=    Set Variable    ${MEASUREMENTS_ENDPOINT}/${measurement_id}    # Create the URL for the request
     ${response}=    GET    ${url}    # Send the GET request
-    [Return]    ${response}    # Return the response
+    RETURN    ${response}    # Return the response
     
 Delete Measurement
     [Documentation]    Deletes a specific measurement by ID
     [Arguments]    ${measurement_id}    # Argument for the measurement ID
     ${url}=    Set Variable    ${MEASUREMENTS_ENDPOINT}/${measurement_id}    # Create the URL for the request
     ${response}=    DELETE    ${url}    # Send the DELETE request
-    [Return]    ${response}    # Return the response
+    RETURN    ${response}    # Return the response
 
 Validate Measurement Response
     [Documentation]    Validates basic structure of measurement response
